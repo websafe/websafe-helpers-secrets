@@ -1,0 +1,15 @@
+stages:
+  - test
+
+phpunit:
+  stage: test
+  image: php:8.3-cli
+  before_script:
+    - apt-get update && apt-get install -y git unzip
+    - php -v
+    - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+    - composer install --no-interaction --prefer-dist
+  script:
+    - composer cs:check
+    - composer lint
+    - composer test

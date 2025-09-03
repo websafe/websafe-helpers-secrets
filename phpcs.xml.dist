@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<ruleset name="websafe-helpers-secrets">
+    <description>PSR-12 with 80 soft and 120 hard line length.</description>
+
+    <!-- Paths to scan -->
+    <file>src</file>
+
+    <!-- Exclusions -->
+    <exclude-pattern>vendor/*</exclude-pattern>
+    <exclude-pattern>*/.php-cs-fixer.cache</exclude-pattern>
+
+    <!-- Base standard -->
+    <rule ref="PSR12" />
+
+    <!-- Line length: warn at 80, error at 120; comments included -->
+    <rule ref="Generic.Files.LineLength">
+        <properties>
+            <property name="lineLimit" value="80" />
+            <property name="absoluteLineLimit" value="120" />
+            <property name="ignoreComments" value="false" />
+        </properties>
+    </rule>
+</ruleset>
